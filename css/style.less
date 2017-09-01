@@ -1,0 +1,48 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+body{
+    text-align: center;
+    font-family: sans-serif;
+}
+
+h1{
+    margin: .5em 0 1em;
+}
+
+table{
+    
+}
+
+
+
+#grid{
+    border-spacing: 0;
+    margin: auto;
+    border-collapse: collapse;
+    input[type='checkbox']{
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        display: block;
+        width: 20px;
+        height: 20px;
+        background: white;
+
+        &:checked{
+            background: black;
+            box-shadow: 0 0 0 99px black inset;
+            outline: none;
+        };
+
+        &:focus{
+            outline: none;
+        };
+    };
+    td{
+            border: 1px solid #333;
+        };
+
+}
