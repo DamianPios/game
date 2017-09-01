@@ -90,6 +90,7 @@ function $ (selector, container) {
                     var checkbox = document.createElement('input');
                     checkbox.type = 'checkbox';
                     this.checkboxes[y][x] = checkbox;
+                    checkbox.coords = [y, x];
 
                     cell.appendChild(checkbox);
                     row.appendChild(cell);
@@ -101,6 +102,47 @@ function $ (selector, container) {
             this.grid.addEventListener('change', function (evt) {
                 if(evt.target.nodeName.toLowerCase() == 'input') {
                     me.stop();
+                }
+            });
+
+            this.grid.addEventListener('keyup', function (evt) {
+                var checkbox = evt.target;
+                if(checkbox.nodeName.toLowerCase() == 'input') {
+                    var coords = checkbox.coords;
+                    var y = coords[0];
+                    var x = coords[1];
+
+                    switch(evt.keyCode) {
+                        case 37:
+                            if(x > 0) {
+                                me.checkboxes[y][x - 1].focus();
+                            } else {
+                                me.checkboxes[y][me.size - 1].focus();
+                            }
+                            break;
+                        case 38:
+                            if(y > 0) {
+                                me.checkboxes[y - 1][x].focus();
+                            } else {
+                                me.checkboxes[me.size - 1][x].focus();
+                            }
+                            break;
+                        case 39:
+                            if(x < me.size - 1) {
+                                me.checkboxes[y][x + 1].focus();
+                            } else {
+                                me.checkboxes[y][0].focus();
+                            }
+
+                            break;
+                        case 40:
+                            if(y < me.size - 1) {
+                                me.checkboxes[y + 1][x].focus();
+                            } else {
+                                me.checkboxes[0][x].focus();
+                            }
+                            break;
+                    }
                 }
             });
 
@@ -143,7 +185,7 @@ function $ (selector, container) {
             if(this.autoplay) {
                 this.timer = setTimeout(function () {
                     me.next();
-                }, 100);
+                }, 1000);
             }
         }
     };
@@ -154,7 +196,7 @@ function $ (selector, container) {
         next: $('button.next')
     };
 
-    var lifeView = new LifeView(document.getElementById('grid'), 12);
+    var lifeView = new LifeView(document.getElementById('grid'), 80);
 
     buttons.next.addEventListener('click', function () {
         lifeView.next();
