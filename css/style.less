@@ -40,13 +40,13 @@ h1{
 
 @keyframes birth{
     50% {
-        box-shadow: 0 0 0 99px green inset;
+        box-shadow: 0 0 0 99px #EA8B9E inset;
     }
 }
 
 @keyframes death {
     50% {
-        box-shadow: 0 0 0 99px red inset;
+        box-shadow: 0 0 0 99px #461E2F inset;
     }
 }
 
@@ -67,7 +67,7 @@ h1{
             background: black;
             box-shadow: 0 0 0 99px black inset;
             outline: none;
-            animation: birth 500ms;
+            animation: birth 500ms ease-in 0ms 1;
         };
         &:not(:checked){
             animation: death 500ms;
