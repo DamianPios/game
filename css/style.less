@@ -38,6 +38,18 @@ h1{
     }
 }*/
 
+@keyframes birth{
+    50% {
+        box-shadow: 0 0 0 99px green inset;
+    }
+}
+
+@keyframes death {
+    50% {
+        box-shadow: 0 0 0 99px red inset;
+    }
+}
+
 #grid{
     border-spacing: 0;
     margin: 1em auto 0;
@@ -50,11 +62,16 @@ h1{
         width: 5px;
         height: 5px;
         background: white;
+        transition: 500ms;
         &:checked{
             background: black;
             box-shadow: 0 0 0 99px black inset;
             outline: none;
+            animation: birth 500ms;
         };
+        &:not(:checked){
+            animation: death 500ms;
+        }
 
     };
     td{

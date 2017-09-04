@@ -89,6 +89,7 @@ function $ (selector, container) {
                     var cell = document.createElement('td');
                     var checkbox = document.createElement('input');
                     checkbox.type = 'checkbox';
+                    checkbox.id = 'cell';
                     this.checkboxes[y][x] = checkbox;
                     checkbox.coords = [y, x];
 
@@ -196,7 +197,7 @@ function $ (selector, container) {
         next: $('button.next')
     };
 
-    var lifeView = new LifeView(document.getElementById('grid'), 80);
+    var lifeView = new LifeView(document.getElementById('grid'), 12);
 
     buttons.next.addEventListener('click', function () {
         lifeView.next();
@@ -211,5 +212,11 @@ function $ (selector, container) {
             clearTimeout(lifeView.timer);
         }
     });
+    $('#cell').addEventListener('click', function () {
 
+        if(/*lifeView.started*/ true) {
+//            lifeView.started = false;
+            console.log('mousedown');
+        }
+    });
 }());
